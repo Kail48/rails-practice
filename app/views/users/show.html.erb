@@ -1,0 +1,9 @@
+<%= render :partial => "shared/navbar" %>
+<div class="w-full h-screen flex flex-col justify-center items-center gap-y-3">
+  <img src="<%= (url_for(@marine.image))%>" alt="" class="h-32 w-auto">
+  <h3 class="text-xl"><%= @marine.name %></h3>
+  <h3 class="text-xl"><%= @marine.position %></h3>
+  <% if current_user.position_before_type_cast>4 %>
+    <button class='flex w-32 justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Promote</button>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<%= render :partial => "shared/navbar" %>
+<div class="w-full flex justify-center items-cener">
+  <div>
+    <h1 class="text-3xl mt-24">Enter the new Bounty for  <strong><%= @pirate.name %></strong></h1>
+    <h2 class="text-xl text-center mt-4 mb-16">Current bounty: <strong><%= @pirate.bounty %>&#8383</strong></h2>
+    <%= form_with url: "/pirates/bounty/new/#{@pirate.id}", method: :put do |form| %>
+      <%= form.number_field :bounty, {:class => 'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'} %>
+      <%= form.submit "Update Bounty", class: 'mt-12 flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' %>
+    <% end %>
+  </div>
+</div>

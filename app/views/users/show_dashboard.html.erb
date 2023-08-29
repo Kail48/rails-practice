@@ -1,0 +1,33 @@
+<%= render :partial => "shared/navbar" %>
+<div class="w-full">
+  <h3 class="text-center text-3xl font-bold mt-6">Top Pirates</h3>
+  <% @top_pirates.each do |pirate| %>
+    <div class="flex flex-col justify-center items-center py-4">
+      <div class="flex flex-col justify-center items-center ">
+        <% if pirate.image.attached? %>
+          <img src="<%= (url_for(pirate.image))%>" alt="" class="h-32 w-auto">
+        <% else%>
+          <%= image_tag "piratedefault.png", :class => "h-32 w-auto"  %>
+        <% end %>
+        <h3>  <%= pirate.name %></h3>
+        <h3><%= pirate.bounty %></h3>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="w-full">
+  <h3 class="text-center text-3xl font-bold mt-6">Top Crews</h3>
+  <% @top_crews.each do |crew| %>
+    <div class="flex flex-col justify-center items-center py-4">
+      <div class="flex flex-col justify-center items-center ">
+        <% if crew.image.attached? %>
+          <img src="<%= (url_for(crew.image))%>" alt="">
+        <% else%>
+          <%= image_tag "piratedefault.png", :class => "h-24 w-auto"  %>
+        <% end %>
+        <h3>  <%= crew.name %></h3>
+        <h3><%= crew.bounty %></h3>
+      </div>
+    </div>
+  <% end %>
+</div>

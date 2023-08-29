@@ -1,0 +1,6 @@
+<% @crews.each do |crew| %>
+  <h3> <%= crew.name %></h3>
+  <% crew.pirates.each do |pirate| %>
+    <h3> <%= pirate.name %></h3>
+  <% end %>
+<% end %>

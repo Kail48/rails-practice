@@ -1,0 +1,65 @@
+<%= render :partial => "shared/navbar" %>
+<% flash.each do |type, msg| %>
+  <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+    <p class="font-bold">Notice</p>
+    <p>  <%= msg %></p>
+  </div>
+</div>
+<% end %>
+<h1 class="text-3xl text-center font-bold mt-6">Add new Pirate</h1>
+<div class="w-full flex items-center justify-center">
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= form_with model: @pirate do |form| %>
+      <div>
+        <label
+              htmlFor="name"
+              class="block text-sm font-medium leading-6 text-gray-900"
+            >
+          Name
+        </label>
+        <div class="mt-2">
+          <%= form.text_field :name, {:class => 'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'} %>
+        </div>
+        <label
+              htmlFor="crew"
+              class="block text-sm font-medium leading-6 text-gray-900"
+            >
+          Crew
+        </label>
+        <div class="mt-2">
+          <%= select_tag "crew_id", options_from_collection_for_select(Crew.all, :id, :name),  {:class=>'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6', :prompt => 'Selected crew'}  %>
+        </div>
+        <label
+              htmlFor="position"
+              class="block text-sm font-medium leading-6 text-gray-900"
+            >
+          Position
+        </label>
+        <div class="mt-2">
+          <%= form.select :position, [["Captain", "captain"], ["First Mate", "first mate"], ["Helmsman", "helmsman"],["Doctor", "doctor"],["Cook", "cook"], ["Sniper", "sniper"]],{},{:class => 'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'} %>
+        </div>
+        <div>
+          <label
+              htmlFor="bounty"
+              class="block text-sm font-medium leading-6 text-gray-900"
+            >
+            Bounty
+          </label>
+          <div class="mt-2">
+            <%= form.number_field :bounty, {:class => 'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'} %>
+          </div>
+          <label
+              htmlFor="image"
+              class="block text-sm font-medium leading-6 text-gray-900"
+            >
+            Photo
+          </label>
+          <div class="mt-2">
+            <%= form.file_field :image,{:class => 'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'} %>
+          </div>
+          <div class="mt-2">
+            <%= form.submit class: 'flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
