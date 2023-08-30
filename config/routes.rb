@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/auth/login', to: 'authentication#login'
+  get '/*a', to: 'application#not_found'
   root "sessions#login"
   post 'login', to: "sessions#create"
   get 'logout', to: "sessions#destroy"
