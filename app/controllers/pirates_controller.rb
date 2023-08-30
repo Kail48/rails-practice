@@ -1,5 +1,6 @@
 require 'byebug'
 class PiratesController < ApplicationController
+    before_action :authorize_request, only:[:get_pirates]
     def index
         puts "reading params", params
         if params[:query]

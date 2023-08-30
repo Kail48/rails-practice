@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :authorize_request, only: []
+    before_action :find_user, only: []
     def new
         @marine=User.new
     end
@@ -42,8 +44,16 @@ class UsersController < ApplicationController
             @position=helpers.current_user.position
         end
     end
+    
     def user_params
         params.require(:user).permit(:name,:username,:password,:position,:image)
     end
+    private
+    def find_user
+        @user=User.find_by_username!(params[:_username])
+        rescue ActiveRecord::RecordNotFound
+            render json: {errors: 'user not found'}, status: :not_found
+        end
+
 
 end
