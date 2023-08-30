@@ -4,6 +4,6 @@ class CreateCrews < ActiveRecord::Migration[7.0]
       t.string :name
       t.timestamps
     end
-    add_column :pirates, :crew_id,:int
+    add_column :pirates, :crew_id, :int
   end
 end
